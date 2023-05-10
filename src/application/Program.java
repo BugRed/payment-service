@@ -1,6 +1,5 @@
 package application;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -9,6 +8,7 @@ import java.util.Scanner;
 import model.entities.Contract;
 import model.entities.Installments;
 import model.service.ContractService;
+import model.service.PaypalService;
 
 public class Program {
 
@@ -33,7 +33,7 @@ public class Program {
 		System.out.print("Enter the number os installments: ");
 		int months = sc.nextInt();
 		
-		ContractService service = new ContractService(null);
+		ContractService service = new ContractService(new PaypalService());
 		
 		service.processContract(contract, months);
 		
